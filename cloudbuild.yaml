@@ -17,7 +17,7 @@ steps:
     - | 
       if [[ "$BRANCH_NAME" == "main" ]]
       then
-        'gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy'
+        gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy
       else
         echo "Skipping deploy"
       fi
