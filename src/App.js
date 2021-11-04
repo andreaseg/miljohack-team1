@@ -1,7 +1,7 @@
 import logo from "./miljohack_logo_resized.png";
 import "./App.css";
-import { data } from "./Data";
-import { chart } from "./Charts";
+import { data } from "./utils/Data";
+import { chart } from "./components/Charts";
 
 function App() {
   return (

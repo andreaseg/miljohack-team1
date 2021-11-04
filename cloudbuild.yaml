@@ -8,7 +8,17 @@ steps:
 - name: node
   entrypoint: npm
   args: ['run', 'build']
+  env:
+    - 'NODE_OPTIONS=--openssl-legacy-provider'
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
-  args: ['-c', 'gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy']
+  args: 
+    - -c
+    - | 
+      if [[ "$BRANCH_NAME" == "main" ]]
+      then
+        gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy
+      else
+        echo "Skipping deploy"
+      fi
 timeout: '1600s'
