@@ -12,7 +12,15 @@ Applikasjonen ligger på App Engine i Google Cloud. Den ligger bak en last balan
 
 Bygg gjøres via en plugin i Github som be Cloud Build om å igangsette byggprosess. Fra _main_ branchen så vil det også deployes artifacter til App Engine. Ved slutten av deployment så blir last balansereren fortalt at den skal bytte til ny stabil versjon.
 
+Applikasjonen er også splittet i separat front- og backend der begge separat skaleres og last balanseres.
+
 ![alt text](docs/arkitektur.jpg)
+
+## Backend
+
+[Backend repo](https://github.com/andreaseg/miljohack-team1-backend)
+
+***
 
 
 [Mer informasjon om Hackathon](https://www.hackathon.knowit.no/)
