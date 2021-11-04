@@ -3,8 +3,8 @@ steps:
   entrypoint: npm
   args: ['install']
 - name: node
-  entrypoint: npm
-  args: ['test -- --watchAll=false']
+  entrypoint: bash
+  args: ['npm test -- --watchAll=false']
 - name: node
   entrypoint: npm
   args: ['run', 'build']
