@@ -1,38 +1,84 @@
+@font-face {
+  font-family: 'content';
+  src: url('fonts/1.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'header';
+  src: url('fonts/2.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'test3';
+  src: url('fonts/3.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'test4';
+  src: url('fonts/4.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'test5';
+  src: url('fonts/5.woff2') format('woff2');
+}
+
+.header-text {
+  font-family: 'header';
+  color: rgb(0, 39, 118);
+  font-size: calc(10px + 2vmin);
+}
+
+.content-text {
+  font-family: 'content';
+  color: rgb(0, 39, 118);
+  font-size: calc(10px + 2vmin);
+}
+
+.chart-text {
+  font-family: 'content';
+  color: rgb(0, 39, 118);
+  font-size: 12px;
+}
+
+.content-in-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
   pointer-events: none;
+  width: 320px;
+  height: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(0, 39, 118);
 }
 
-.App-link {
-  color: #61dafb;
+.App-header:hover {
+  animation: shake 10.82s cubic-bezier(.36, .07, .19, .97) both infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes shake {
+  .76%, 6.84% {transform: translate3d(-1px, 0, 0)}
+  1.52%, 6.08% {transform: translate3d(2px, 0, 0)}
+  2.28%, 3.8%, 5.32% {transform: translate3d(-4px, 0, 0)}
+  3.04%, 4.56% {transform: translate3d(4px, 0, 0)}
 }
