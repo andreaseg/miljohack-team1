@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "./miljohack_logo_resized.png";
+import './Fonts.css';
 import styles from  "./App.module.css";
 import api from "./api/Api";
 
