@@ -3,7 +3,7 @@ body {
 }
 
 button {
-    border-radius: 15px;
+    border-radius: 25px;
     color: #0a307b;
     background-color: #dbe8f1;
     border:0;
@@ -22,4 +22,10 @@ button:active {
 
 .checkbox {
     border-radius: 50%;
+}
+
+input {
+    height: 44px;
+    border-radius: 5px;
+    margin: 5px;
 }

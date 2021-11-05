@@ -59,7 +59,11 @@ function App() {
       </header>
       <div className={styles.main}>
 
-          <Checkbox />
+          <Checkbox onCheck={checked => console.log("Checked", checked)}i >Textbox text</Checkbox>
+
+          <b>Kråka på taket!</b>
+
+          <Checkbox onCheck={checked => console.log("Checked", checked)}i ></Checkbox>
 
           <HouseInputs
             inputHouse={inputHouse}
@@ -85,19 +89,10 @@ function App() {
 
       </div>
       <footer className={styles.footer}>
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="Miljøkråk1 Logo" />
       </footer>
     </div>
   );
 }
 
-function getDropDownList(values, setValues, text) {
-  const id = "id-" + Math.random.toString()
-  return (
-    <div className="input-block">
-      <label htmlFor={id}>{text}</label>
-      <input type="text" id={id} value={values} onChange={e => setValues(e.target.value)} />
-    </div>
-  )
-}
 export default App;

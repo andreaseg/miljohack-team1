@@ -1,10 +1,13 @@
 .content {
+    font-family: 'content';
+    font-size: 18px;
     width: 400px;
     margin: auto;
     background-color: white;
 }
 
 .header {
+    font-family: 'header';
     color: white;
     background-color:  #005aa4;
     text-align: center;
@@ -24,5 +27,16 @@
 }
 
 .main {
-    padding-top: 40px;
+    padding: 40px 20px 20px 20px;
+}
+
+button {
+    font-size: 18px;
+    font-family: 'button';
+}
+
+b {
+    font-size: 34px;
+    font-family: 'bold'; 
+    color: #005AA4;
 }
