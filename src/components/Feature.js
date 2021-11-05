@@ -31,6 +31,7 @@ class FeaturesInfo extends React.Component {
             <Row text="Type:" value={featureNames[feature.type]}/>
             <Row text="Forbruk:" value={feature.energy+" kWh"} />
             <Row text="Utslipp:" value={feature.pollution+" CO2-ekvivalenter"} />
+            <Row text="Utgifter:" value={parseInt(feature.expense)+"kr"}/>
           </div>)
       )
 

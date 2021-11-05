@@ -1,6 +1,7 @@
 import React from 'react';
 import InputField from './InputField';
-import ImprovementsDropdown from './ImprovementsDropdown';
+import Row from './Row';
+import getKey from '../utils/GetKey';
 
 const improvementItems = [
   {
@@ -54,15 +55,33 @@ class HouseInputs extends React.Component {
     const addImprovement = this.props.addImprovement;
     const floors = this.props.floors;
     const setFloors = this.props.setFloors;
+    const showImprovements = this.props.showImprovements;
 
-    let improvementsElement;
-    if (improvements) {
-      //improvementsElement = <InputField text="Forbedringer: " value={improvements} setValue={setImprovements}/> 
-      improvementsElement = 
-        <div>Tiltak<ImprovementsDropdown values={improvementItems} addImprovement={addImprovement}/></div>
+
+    let improvementElement;
+
+    /*
+    if (showImprovements && improvements) {
+      console.log(improvements)
+
+      const appliedImprovements = improvements.map(improvement => 
+        <div className="row">
+          <div className="column"></div>
+          <div key={getKey()} className="row column">{improvement.name}, </div>
+        </div>
+      );
+
+
+      improvementElement = (
+        <div className="row">
+          <div className="column bold">Utførte tiltak:</div><br />
+          {appliedImprovements}
+        </div>
+      );
     } else {
-      improvementsElement = (null)
+      improvementElement = (null);
     }
+    */
 
     return (
         <div className="container">
@@ -71,7 +90,7 @@ class HouseInputs extends React.Component {
           <InputField text="Energimerking: " value={energyGrade} setValue={setEnergyGrade}/> 
           <InputField text="Leilighet: " value={isApartment} setValue={setIsApartment}/> 
           <InputField text="Etasjer: " value={floors} setValue={setFloors}/> 
-          {improvementsElement}
+          {improvementElement}
         </div>
     )
   }

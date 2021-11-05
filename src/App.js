@@ -29,13 +29,23 @@ function App() {
   const [constructionYear, setConstructionYear] = useState(2001);
   const [municipalityNumber, setMunicipalityNumber] = useState(301);
   const [isApartment, setIsApartment] = useState(false);
-  const [improvements, setImprovements] = useState([]);
+  const [improvements, setImprovements] = useState([
+    {
+      name: "Varmepumpe",
+      value: "HEAT_EXCHANGE_UNIT"
+    },
+    {
+      name: "Isolering av vegger",
+      value: "WALL_ISOLATION",
+    },
+  ]);
   const [responseId, setResponseId] = useState(null);
   const [response, setResponse] = useState(null);
   const [features, setFeatures] = useState(null);
 
   async function postHousingData() {
     console.log("postHousingData()")
+    const improvementEnums = improvements.map(improvement => improvement.value)
     const id = await api.postHouse({
       area,
       energyGrade,
@@ -43,7 +53,7 @@ function App() {
       constructionYear,
       municipalityNumber,
       isApartment,
-      improvements
+      improvementEnums
     });
 
     console.log("got Id: "+id)
@@ -69,7 +79,7 @@ function App() {
   }
 
   function addImprovement(improvement) {
-    const updatedImprovements = improvements.push(improvements);
+    const updatedImprovements = [...improvements, improvement];
     setImprovements(updatedImprovements)
   }
 
@@ -81,12 +91,6 @@ function App() {
       <div className="content-in-middle">
         <div className="text">
 
-          {isDesktopOrLaptop && <p>You are a desktop or laptop</p>}
-          {isBigScreen && <p>You have a huge screen</p>}
-          {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
-          <p>Your are in {isPortrait ? "portrait" : "landscape"} orientation</p>
-          {isRetina && <p>You are retina</p>}
-          
           <h2>Din bolig</h2>
 
           <HouseInputs
@@ -127,64 +131,5 @@ function App() {
     </div>
   );
 }
-
-function getDropDownList(values, setValues, text) {
-  const id = "id-" + Math.random.toString()
-  return (
-    <div className="input-block">
-      <label htmlFor={id}>{text}</label>
-      <input type="text" id={id} value={values} onChange={e => setValues(e.target.value)} />
-    </div>
-  )
-}
-
-/*
-
-
-          <h2>Test info</h2>
-          <div className="text-left">
-            Areal: {area}<br />
-            Byggeår: {constructionYear}<br />
-            Energimerking: {energyGrade}<br />
-            Leilighet: {isApartment ? "Ja" : "Nei"}<br />
-            Kommunenummer: {municipalityNumber}<br />
-            Etasjer: {floors}<br />
-            Forbedringer: {improvements}<br />
-          </div>
-
-
-          p tags p tags p tags Lorem ipsum
-          <img src={svgTest} className="App-logo" alt="logo" />
-          {isDesktopOrLaptop && <p>You are a desktop or laptop</p>}
-          {isBigScreen && <p>You have a huge screen</p>}
-          {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
-          <p>Your are in {isPortrait ? "portrait" : "landscape"} orientation</p>
-          {isRetina && <p>You are retina</p>}
-
-
-
-
-
-
-
-
-
-
-
-*/
-
-
-        /*
-          <div className="container">
-            <InputField text="Areal: " value={area} setValue={setArea}/> 
-            <InputField text="Bygningsår: " value={constructionYear} setValue={setConstructionYear}/> 
-            <InputField text="Energymerking: " value={energyGrade} setValue={setEnergyGrade}/> 
-            <InputField text="Leilighet: " value={isApartment} setValue={setIsApartment}/> 
-            <InputField text="Etasjer: " value={floors} setValue={setFloors}/> 
-            <InputField text="Forbedringer: " value={improvements} setValue={setImprovements}/> 
-          </div>
-        */
-
-//const performGetRequest() =
 
 export default App;
