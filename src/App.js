@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "./miljohack_logo_resized.png";
 import svgTest from "./art/iPhone8-1.svg";
-import "./App.css";
+import styles from  "./App.module.css";
 import { data } from "./utils/Data";
 import { chart } from "./components/Charts";
 import api from "./api/Api";
@@ -12,6 +12,7 @@ import HouseInfo from "./components/HouseInfo";
 import FeaturesInfo from "./components/Feature";
 import HouseInputs from "./components/HouseInputs";
 import SB1Button from "./components/SB1Button";
+import Checkbox from "./components/Checkbox";
 
 
 function App() {
@@ -74,20 +75,13 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className={styles.content}>
+      <header className={styles.header}>
+      Din bolig
       </header>
-      <div className="content-in-middle">
-        <div className="text">
+      <div className={styles.main}>
 
-          {isDesktopOrLaptop && <p>You are a desktop or laptop</p>}
-          {isBigScreen && <p>You have a huge screen</p>}
-          {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
-          <p>Your are in {isPortrait ? "portrait" : "landscape"} orientation</p>
-          {isRetina && <p>You are retina</p>}
-          
-          <h2>Din bolig</h2>
+          <Checkbox />
 
           <HouseInputs
             area={area}
@@ -119,11 +113,13 @@ function App() {
             onClick={getEnergyProfile} />
           <FeaturesInfo value={features} setValue={setFeatures} />
 
-        </div>
 
         <div className="chart-text">{chart(data)}</div>
 
       </div>
+      <footer className={styles.footer}>
+        <img src={logo} alt="logo" />
+      </footer>
     </div>
   );
 }

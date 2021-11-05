@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(95, 98, 105);
+}
+
+button {
+    border-radius: 15px;
+    color: #0a307b;
+    background-color: #dbe8f1;
+    border:0;
+    margin:1em;
+    padding:0.6em 2em;
+}
+
+button:hover {
+    background-color: #ccd9e2;
+}
+
+button:active {
+    background: #b7c0c7;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+}
+
+.checkbox {
+    border-radius: 50%;
+}
