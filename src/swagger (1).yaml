@@ -1,0 +1,82 @@
+---
+openapi: 3.0.3
+info:
+  title: quarkus-helloworld API
+  version: 1.0-SNAPSHOT
+paths:
+  /houses:
+    post:
+      tags:
+      - House Resource
+      description: "Create a new house, returns the id used to retrieve the house\
+        \ as the response"
+      requestBody:
+        description: The new house to be created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/House'
+      responses:
+        default:
+          description: Id of the house that has been created
+  /houses/{id}:
+    get:
+      tags:
+      - House Resource
+      description: Get a house from datastore by id
+      parameters:
+      - name: id
+        in: path
+        description: The id. Format is UUID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/House'
+    post:
+      tags:
+      - House Resource
+      description: "Create a new house with the given id, if the id is taken overwrites\
+        \ the old house"
+      parameters:
+      - name: id
+        in: path
+        description: The id. Format is UUID
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: "The new house to be created, or updated if an old id is used"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/House'
+      responses:
+        "201":
+          description: Created
+    delete:
+      tags:
+      - House Resource
+      description: Delete the house with the given id
+      parameters:
+      - name: id
+        in: path
+        description: The id. Format is UUID
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No Content
+components:
+  schemas:
+    House:
+      type: object
+      properties:
+        data:
+          type: string

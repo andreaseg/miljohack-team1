@@ -23,16 +23,46 @@
   src: url('fonts/5.woff2') format('woff2');
 }
 
-.header-text {
+h1 {
   font-family: 'header';
   color: rgb(0, 39, 118);
   font-size: calc(10px + 2vmin);
 }
 
-.content-text {
+h2 {
+  font-family: 'header';
+  color: rgb(0, 39, 118);
+}
+
+.sb1-button {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-weight: bold;
+  font-family: 'header';
+  color: rgb(0, 39, 118);
+}
+
+.sb1-button:hover {
+  text-decoration: underline;
+}
+
+p {
   font-family: 'content';
   color: rgb(0, 39, 118);
-  font-size: calc(10px + 2vmin);
+  font-size: 16px;
+}
+
+.text {
+  font-family: 'content';
+  color: rgb(0, 39, 118);
+  font-size: 16px;
+}
+
+.text-left {
+  text-align: left;
+  font-family: 'content';
+  color: rgb(0, 39, 118);
+  font-size: 16px;
 }
 
 .chart-text {
@@ -46,6 +76,40 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.input-row {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: left;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+label {
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .App {
