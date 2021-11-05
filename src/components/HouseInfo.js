@@ -4,6 +4,8 @@ class HouseInfo extends React.Component {
   render() {
     const headerText = this.props.headerText;
     const house = this.props.house;
+    console.log("HouseInfo()")
+    console.log(house)
 
 
     if (house) {

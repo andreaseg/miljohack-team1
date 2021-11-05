@@ -33,15 +33,19 @@ function App() {
     const result = await api.getHouse(id);
     console.log("result");
     console.log(result);
-    setHouseId(result);
+    setHouseId(id);
     getEnergyProfile();
   }
 
   async function getHouse() {
-    console.log("getImprovements() responseId: " + houseId)
+    console.log("getHouse() responseId: " + houseId)
     if (houseId) {
       const result = await api.getHouse(houseId)
+      console.log("getHouse()")
+      console.log(result)
+
       setOutputHouse(result)
+      return result;
     }
   }
 
@@ -73,18 +77,7 @@ function App() {
             text="Send inn og hent informasjon om bolig"
             onClick={postHousingData} />
 
-          <HouseInfo headerText="Fra backend" house={outputHouse}/> 
-
-          <SB1Button 
-            text="Hent hus fra backend"
-            onClick={getHouse} />
-
-          <SB1Button 
-            text="Hent forbruk"
-            onClick={getEnergyProfile} />
-          <FeaturesInfo value={outputHouse} />
-
-          <HouseInfo headerText="headerText" house={outputHouse} />
+          <HouseInfo headerText="Backend Output" house={outputHouse} />
 
 
       </div>

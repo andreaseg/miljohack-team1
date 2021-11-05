@@ -24,7 +24,7 @@ const Checkbox = (props) => {
             onChange={onChangeHandle}
             id={id}
           />
-          <label for={id}></label>
+          <label htmlFor={id}></label>
         </div>
       </div>
     </div>
