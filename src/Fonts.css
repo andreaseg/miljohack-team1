@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "header";
+  src: url("fonts/SpareBank1Title-Medium-Web.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "content";
+  src: url("fonts/SpareBank1-Light-Web.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "button";
+  src: url("fonts/SpareBank1-Medium-Web.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "bold";
+  src: url("fonts/SpareBank1Title-Medium-Web.woff2") format("woff2");
+}

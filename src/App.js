@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "./miljohack_logo_resized.png";
-import svgTest from "./art/iPhone8-1.svg";
 import styles from  "./App.module.css";
+import './Fonts.css';
 import { data } from "./utils/Data";
 import { chart } from "./components/Charts";
 import api from "./api/Api";
@@ -81,7 +81,11 @@ function App() {
       </header>
       <div className={styles.main}>
 
-          <Checkbox />
+          <Checkbox onCheck={checked => console.log("Checked", checked)}i >Textbox text</Checkbox>
+
+          <b>Kråka på taket!</b>
+
+          <Checkbox onCheck={checked => console.log("Checked", checked)}i ></Checkbox>
 
           <HouseInputs
             area={area}
@@ -118,7 +122,7 @@ function App() {
 
       </div>
       <footer className={styles.footer}>
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="Miljøkråk1 Logo" />
       </footer>
     </div>
   );
