@@ -18,13 +18,10 @@ class FeaturesInfo extends React.Component {
 
 
   render() {
-    if (this.props.value) {
-      const id = "id-" + Math.random.toString()
-      const values = this.props.value;
-      const setValue = this.props.setValue
-      const text = this.props.text
-
-      console.log(values)
+    if (this.props.features) {
+      console.log("åååå")
+      console.log(this.props.value)
+      const values = this.props.features;
       const rows = values.map(feature => 
         (
           <div key={getKey()}>

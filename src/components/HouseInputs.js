@@ -42,55 +42,16 @@ const improvementItems = [
 
 class HouseInputs extends React.Component {
   render() {
-    const area = this.props.area;
-    const setArea = this.props.setArea;
-    const constructionYear = this.props.constructionYear
-    const setConstructionYear = this.props.setConstructionYear
-    const energyGrade = this.props.energyGrade;
-    const setEnergyGrade = this.props.setEnergyGrade;
-    const isApartment = this.props.isApartment;
-    const setIsApartment = this.props.setIsApartment;
-    const improvements = this.props.improvements;
-    const setImprovements = this.props.setImprovements;
-    const addImprovement = this.props.addImprovement;
-    const floors = this.props.floors;
-    const setFloors = this.props.setFloors;
-    const showImprovements = this.props.showImprovements;
-
-
-    let improvementElement;
-
-    /*
-    if (showImprovements && improvements) {
-      console.log(improvements)
-
-      const appliedImprovements = improvements.map(improvement => 
-        <div className="row">
-          <div className="column"></div>
-          <div key={getKey()} className="row column">{improvement.name}, </div>
-        </div>
-      );
-
-
-      improvementElement = (
-        <div className="row">
-          <div className="column bold">Utførte tiltak:</div><br />
-          {appliedImprovements}
-        </div>
-      );
-    } else {
-      improvementElement = (null);
-    }
-    */
+    const inputHouse = { ...this.props.inputHouse };
+    const setInputHouse = this.props.setInputHouse;
 
     return (
         <div className="container">
-          <InputField text="Areal: " value={area} setValue={setArea}/> 
-          <InputField text="Bygningsår: " value={constructionYear} setValue={setConstructionYear}/> 
-          <InputField text="Energimerking: " value={energyGrade} setValue={setEnergyGrade}/> 
-          <InputField text="Leilighet: " value={isApartment} setValue={setIsApartment}/> 
-          <InputField text="Etasjer: " value={floors} setValue={setFloors}/> 
-          {improvementElement}
+          <InputField text="Areal: " value={inputHouse.area} setValue={(e) => {inputHouse.area = e; setInputHouse(inputHouse); }}/> 
+          <InputField text="Bygningsår: " value={inputHouse.constructionYear} setValue={(e) => {inputHouse.constructionYear = e; setInputHouse(inputHouse);}}/> 
+          <InputField text="Energimerking: " value={inputHouse.energyGrade} setValue={(e) => {inputHouse.energyGrade = e; setInputHouse(inputHouse);}}/> 
+          <InputField text="Leilighet: " value={inputHouse.isApartment} setValue={(e) => {inputHouse.isApartment = e; setInputHouse(inputHouse);}}/> 
+          <InputField text="Etasjer: " value={inputHouse.floors} setValue={(e) => {inputHouse.floors = e; setInputHouse(inputHouse);}}/> 
         </div>
     )
   }

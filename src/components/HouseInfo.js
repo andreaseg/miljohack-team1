@@ -7,6 +7,7 @@ class HouseInfo extends React.Component {
 
 
     if (house) {
+        console.log("houseInfo()")
         console.log(house)
 
         let improvements;
@@ -17,16 +18,16 @@ class HouseInfo extends React.Component {
         }
 
         return (
-        <div>
-            <h2>{headerText}</h2>
-            Areal: {house.area}<br />
-            Byggeår: {house.constructionYear}<br />
-            Energimerking: {house.energyGrade}<br />
-            Leilighet: {house.isApartment ? "Ja" : "Nei"}
-            Kommunenummer: {house.municipalityNumber}<br />
-            Etasjer: {house.floors}<br />
-            {improvements}
-        </div>
+            <div>
+                <h2>{headerText}</h2>
+                Areal: {house.area}<br />
+                Byggeår: {house.constructionYear}<br />
+                Energimerking: {house.energyGrade}<br />
+                Leilighet: {house.isApartment ? "Ja" : "Nei"}
+                Kommunenummer: {house.municipalityNumber}<br />
+                Etasjer: {house.floors}<br />
+                {improvements}
+            </div>
         )
     } else {
         return (null)
