@@ -13,6 +13,15 @@ const Checkbox = (props) => {
     props.onCheck(checked);
   };
 
+  const onKeyPressHandle = (event) => {
+    console.log(event.keyCode);
+    const isEnterOrSpace = event.keyCode === 32 || event.keyCode === 13 || event.keyCode === 0;
+    if (isEnterOrSpace) {
+      event.preventDefault();
+      setIsChecked(prev => !prev);
+    }
+  };
+
   return (
     <div className={styles.top}>
       {props.children && <div className={styles.label}>{props.children}</div>}
@@ -24,7 +33,7 @@ const Checkbox = (props) => {
             onChange={onChangeHandle}
             id={id}
           />
-          <label htmlFor={id}></label>
+          <label htmlFor={id} tabIndex="0" onKeyPress={onKeyPressHandle}></label>
         </div>
       </div>
     </div>

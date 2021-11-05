@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "./miljohack_logo_resized.png";
+import './Fonts.css';
 import styles from  "./App.module.css";
 import api from "./api/Api";
 
@@ -12,8 +13,6 @@ import Checkbox from "./components/Checkbox";
 
 
 function App() {
-  const [houseId, setHouseId] = useState(null);
-
   const [inputHouse, setInputHouse] = useState({
     area: 65,
     energyGrade: "C",
@@ -31,25 +30,13 @@ function App() {
 
     console.log("got Id: "+id);
     const result = await api.getHouse(id);
+
     console.log("result");
     console.log(result);
-    setHouseId(id);
-    getEnergyProfile();
+    getEnergyProfile(id);
   }
 
-  async function getHouse() {
-    console.log("getHouse() responseId: " + houseId)
-    if (houseId) {
-      const result = await api.getHouse(houseId)
-      console.log("getHouse()")
-      console.log(result)
-
-      setOutputHouse(result)
-      return result;
-    }
-  }
-
-  async function getEnergyProfile() {
+  async function getEnergyProfile(houseId) {
     if (houseId) {
       const result = await api.getEnergyProfile(houseId)
       setOutputHouse(result)
