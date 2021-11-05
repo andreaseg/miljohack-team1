@@ -13,8 +13,6 @@ import Checkbox from "./components/Checkbox";
 
 
 function App() {
-  const [houseId, setHouseId] = useState(null);
-
   const [inputHouse, setInputHouse] = useState({
     area: 65,
     energyGrade: "C",
@@ -32,21 +30,13 @@ function App() {
 
     console.log("got Id: "+id);
     const result = await api.getHouse(id);
+
     console.log("result");
     console.log(result);
-    setHouseId(result);
-    getEnergyProfile();
+    getEnergyProfile(id);
   }
 
-  async function getHouse() {
-    console.log("getImprovements() responseId: " + houseId)
-    if (houseId) {
-      const result = await api.getHouse(houseId)
-      setOutputHouse(result)
-    }
-  }
-
-  async function getEnergyProfile() {
+  async function getEnergyProfile(houseId) {
     if (houseId) {
       const result = await api.getEnergyProfile(houseId)
       setOutputHouse(result)
@@ -74,18 +64,7 @@ function App() {
             text="Send inn og hent informasjon om bolig"
             onClick={postHousingData} />
 
-          <HouseInfo headerText="Fra backend" house={outputHouse}/> 
-
-          <SB1Button 
-            text="Hent hus fra backend"
-            onClick={getHouse} />
-
-          <SB1Button 
-            text="Hent forbruk"
-            onClick={getEnergyProfile} />
-          <FeaturesInfo value={outputHouse} />
-
-          <HouseInfo headerText="headerText" house={outputHouse} />
+          <HouseInfo headerText="Backend Output" house={outputHouse} />
 
 
       </div>

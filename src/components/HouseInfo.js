@@ -5,12 +5,10 @@ class HouseInfo extends React.Component {
     const headerText = this.props.headerText;
     const house = this.props.house;
 
-
     if (house) {
-        console.log("houseInfo()")
-        console.log(house)
 
         let improvements;
+
         if (house.improvements) {
             improvements = <>Forbedringer: {house.improvements}<br /></>
         } else {

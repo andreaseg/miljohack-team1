@@ -33,7 +33,7 @@ const Checkbox = (props) => {
             onChange={onChangeHandle}
             id={id}
           />
-          <label for={id} tabindex="0" onKeyPress={onKeyPressHandle}></label>
+          <label htmlFor={id} tabIndex="0" onKeyPress={onKeyPressHandle}></label>
         </div>
       </div>
     </div>
