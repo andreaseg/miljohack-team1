@@ -10,6 +10,7 @@ import FeaturesInfo from "./components/FeaturesInfo";
 import HouseInputs from "./components/HouseInputs";
 import SB1Button from "./components/SB1Button";
 import Checkbox from "./components/Checkbox";
+import YourFootprint from "./components/YourFootprint";
 
 
 function App() {
@@ -49,23 +50,34 @@ function App() {
       </header>
       <div className={styles.main}>
 
-          <Checkbox onCheck={checked => console.log("Checked", checked)}i >Textbox text</Checkbox>
 
-          <b>Kråka på taket!</b>
+          <div className="dittForbruk">
+            <h3>Ditt forbruk</h3>
+            Lønnskonto<br />
+            <b>20 945 kr</b><br />
+            Neste forfallsdato er 16. desember<br />
+
+            <h4>Ditt fotavtrykk</h4><br />
+
+            Du har litt å gå på<br />
+            <SB1Button text="Se detaljer" onClick={() => {}} />
+          </div>
 
           <Checkbox onCheck={checked => console.log("Checked", checked)}i ></Checkbox>
 
+          <h2>Din bolig</h2>
           <HouseInputs
             inputHouse={inputHouse}
             setInputHouse={setInputHouse} />
 
           <SB1Button 
-            text="Send inn og hent informasjon om bolig"
+            text="Se ditt forbruk"
             onClick={postHousingData} />
 
-          <HouseInfo headerText="Backend Output" house={outputHouse} />
+          <HouseInfo headerText="Detaljer" house={outputHouse} />
 
-          <h3>Tiltak:</h3>
+          <YourFootprint value={1337} />
+
           <FeaturesInfo features={features} />
 
 
@@ -76,5 +88,9 @@ function App() {
     </div>
   );
 }
+/*
+
+<Checkbox onCheck={checked => console.log("Checked", checked)}i >Textbox text</Checkbox>
+          */
 
 export default App;
