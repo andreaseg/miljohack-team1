@@ -23,23 +23,22 @@ function App() {
   });
 
   const [outputHouse, setOutputHouse] = useState(null)
+  const [features, setFeatures] = useState([])
 
   async function postHousingData() {
-    console.log("postHousingData()");
     const id = await api.postHouse(inputHouse);
 
-    console.log("got Id: "+id);
-    const result = await api.getHouse(id);
+    const house = await api.getHouse(id);
+    setOutputHouse(house);
 
-    console.log("result");
-    console.log(result);
-    getEnergyProfile(id);
+    getEnergyProfile(house, id);
   }
 
-  async function getEnergyProfile(houseId) {
-    if (houseId) {
-      const result = await api.getEnergyProfile(houseId)
-      setOutputHouse(result)
+  async function getEnergyProfile(house, houseId) {
+    if (house && houseId) {
+      const features = await api.getEnergyProfile(houseId)
+      setFeatures(features);
+
     }
   }
 
@@ -65,6 +64,9 @@ function App() {
             onClick={postHousingData} />
 
           <HouseInfo headerText="Backend Output" house={outputHouse} />
+
+          <h3>Tiltak:</h3>
+          <FeaturesInfo features={features} />
 
 
       </div>

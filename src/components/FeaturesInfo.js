@@ -19,15 +19,13 @@ class FeaturesInfo extends React.Component {
 
   render() {
     if (this.props.features) {
-      console.log("åååå")
-      console.log(this.props.value)
       const values = this.props.features;
       const rows = values.map(feature => 
         (
           <div key={getKey()}>
             <Row text="Type:" value={featureNames[feature.type]}/>
-            <Row text="Forbruk:" value={feature.energy+" kWh"} />
-            <Row text="Utslipp:" value={feature.pollution+" CO2-ekvivalenter"} />
+            <Row text="Forbruk:" value={parseInt(feature.energy)+" kWh"} />
+            <Row text="Utslipp:" value={parseInt(feature.pollution)+" CO2-ekvivalenter"} />
             <Row text="Utgifter:" value={parseInt(feature.expense)+"kr"}/>
           </div>)
       )

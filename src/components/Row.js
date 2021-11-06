@@ -11,7 +11,7 @@ class Row extends React.Component {
       return (
           <div>
             <div className="row">
-                <div className="column bold">
+                <div className="column b">
                 {text}
                 </div>
                 <div className="column">

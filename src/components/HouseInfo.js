@@ -21,7 +21,7 @@ class HouseInfo extends React.Component {
                 Areal: {house.area}<br />
                 Byggeår: {house.constructionYear}<br />
                 Energimerking: {house.energyGrade}<br />
-                Leilighet: {house.isApartment ? "Ja" : "Nei"}
+                Leilighet: {house.isApartment ? "Ja" : "Nei"}<br />
                 Kommunenummer: {house.municipalityNumber}<br />
                 Etasjer: {house.floors}<br />
                 {improvements}
