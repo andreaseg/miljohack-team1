@@ -85,10 +85,6 @@ function App() {
             text="Se ditt forbruk"
             onClick={postHousingData} />
 
-          <HouseInfo headerText="Detaljer" house={outputHouse} />
-
-          <YourFootprint value={1337} />
-
           <FeaturesInfo features={features} />
 
 

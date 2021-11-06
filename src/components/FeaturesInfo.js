@@ -1,13 +1,14 @@
 import React from 'react';
 import Row from './Row';
 import getKey from '../utils/GetKey';
+import Note from './Note';
 
   const featureNames = {
     CEILINGS: "Tak",
     WALLS: "Vegger",
     FLOORS: "Gulv",
     WINDOWS: "Vinduer",
-    HEATING_UNIT: "Oppvarming i kWh",
+    HEATING_UNIT: "Oppvarming",
     FRIDGE: "Kjøleskap",
     WASHING_MACHINE: "Vaskemaskin",
     CLOTHES_DRYER: "Tørketrommel",
@@ -22,10 +23,14 @@ class FeaturesInfo extends React.Component {
 
     if (features && features.length > 0) {
       const values = this.props.features;
-      const rows = values.map(feature => 
+
+      const sorted = values.sort((a, b) => (a.pollution < b.pollution) ? 1 : -1).slice(0, 3);
+      const sumSorted = sorted.map(item => item.pollution).reduce((acc, a) => acc + a, 0);
+
+      const rows = sorted.map(feature => 
         (
           <div key={getKey()}>
-            <h3>{featureNames[feature.type]}</h3>
+            <h4>{featureNames[feature.type]}</h4>
             Forbruk: {parseInt(feature.energy)+" kWh"}<br />
             Utslipp: {parseInt(feature.pollution)+" CO2-ekvivalenter"}<br />
             Utgifter: {parseInt(feature.expense)+"kr"}<br />
@@ -36,7 +41,11 @@ class FeaturesInfo extends React.Component {
       return (
           <div>
             <h2>Ditt forbruk</h2>
+              Ditt totale forbruk er {parseInt(sumSorted)}<br />
+              Se hvilke kråker som stjeler mest!
+            <h3>Dine top 3 kråker!</h3>
             {rows}
+
           </div>
       )
     } else {
@@ -44,5 +53,18 @@ class FeaturesInfo extends React.Component {
     }
   }
 }
+/*
+
+          <Note>
+            <h1>Header</h1>
+          </Note>
+
+          <Note right='true' >
+            <h2>Header 2</h2>
+            <p>text <b>emph</b></p>
+          </Note>
+
+
+*/
 
 export default FeaturesInfo;
