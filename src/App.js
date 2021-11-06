@@ -12,6 +12,7 @@ import SB1Button from "./components/SB1Button";
 import Checkbox from "./components/Checkbox";
 import YourFootprint from "./components/YourFootprint";
 import Note from "./components/Note";
+import ImprovementsInfo from "./components/ImprovementsInfo";
 
 function App() {
   const [inputHouse, setInputHouse] = useState({
@@ -21,15 +22,17 @@ function App() {
     constructionYear: 2001,
     municipalityNumber: 301,
     isApartment: false,
+    improvements: []
   });
 
-  const [outputHouse, setOutputHouse] = useState(null);
+  const [outputHouse, setOutputHouse] = useState();
   const [features, setFeatures] = useState([]);
 
   async function postHousingData() {
     const id = await api.postHouse(inputHouse);
 
     const house = await api.getHouse(id);
+    console.log("house");
     setOutputHouse(house);
 
     getEnergyProfile(house, id);
@@ -41,6 +44,14 @@ function App() {
       console.log(features);
       setFeatures(features);
     }
+  }
+
+  function setImprovements(improvements) {
+    console.log("Setting state with improvements");
+    console.log(improvements);
+    const updatedHouse = { ...inputHouse };
+    updatedHouse.improvements = improvements;
+    setInputHouse(updatedHouse);
   }
 
   return (
@@ -56,6 +67,7 @@ function App() {
         </Note>
 
         <HouseInputs inputHouse={inputHouse} setInputHouse={setInputHouse} />
+        <ImprovementsInfo house={inputHouse} setImprovements={setImprovements} />
 
         <Note right='true'>
           <h1>Tekst her :)</h1>
@@ -64,6 +76,7 @@ function App() {
         <SB1Button text="Se ditt forbruk" onClick={postHousingData} />
 
         <FeaturesInfo features={features} />
+
       </div>
       <footer className={styles.footer}>
         <img src={logo} alt="Miljøkråk1 Logo" />
