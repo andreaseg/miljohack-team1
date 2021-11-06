@@ -21,7 +21,7 @@ function App() {
     floors: 1,
     constructionYear: 2001,
     municipalityNumber: 301,
-    isApartment: false,
+    isApartment: true,
     improvements: [],
   });
 
@@ -64,7 +64,7 @@ function App() {
         <Note>
           <h2>Miljøkråken</h2>
           <p>
-            Fyll inn for din bolig, så finner miljøkråken hvor du lekker mest
+            Beskriv din bolig, så finner miljøkråken hvor du lekker mest
             energi
           </p>
         </Note>
@@ -92,6 +92,7 @@ function App() {
           />
         )}
 
+        <hr />
 
         <button className={styles.submit} onClick={postHousingData} >Beregn Forbruk</button>
 
