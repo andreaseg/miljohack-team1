@@ -43,7 +43,7 @@ class FeaturesInfo extends React.Component {
             <h2>Ditt forbruk</h2>
               Ditt totale forbruk er {parseInt(sumSorted)}<br />
               Se hvilke kråker som stjeler mest!
-            <h3>Dine top 3 kråker!</h3>
+            <h3>Dine topp 3 kråker!</h3>
             {rows}
 
           </div>
@@ -53,18 +53,5 @@ class FeaturesInfo extends React.Component {
     }
   }
 }
-/*
-
-          <Note>
-            <h1>Header</h1>
-          </Note>
-
-          <Note right='true' >
-            <h2>Header 2</h2>
-            <p>text <b>emph</b></p>
-          </Note>
-
-
-*/
 
 export default FeaturesInfo;
