@@ -17,6 +17,32 @@ const featureNames = {
   SHOWER: "Dusj",
 };
 
+const FeatureInfoRow = (props) => {
+  const feature = props.feature;
+
+  return (
+    <div>
+      {feature.type !== null && <div className={styles.header}>{featureNames[feature.type]}</div>}
+      <div className={styles.container}>
+        <div className={styles.energy}>
+          <div className={styles.value}>{parseInt(feature.energy)} KwT</div>
+          <div className={styles.label}>Forbruk</div>
+        </div>
+        <div className={styles.pollution}>
+          <div className={styles.value}>{parseInt(feature.expense)} kr</div>
+          <div className={styles.label}>Utgifter</div>
+        </div>
+        <div className={styles.expenses}>
+          <div className={styles.value}>
+            {parseInt(feature.pollution)} CO<sub>2</sub>
+          </div>
+          <div className={styles.label}>Utslipp</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 class FeaturesInfo extends React.Component {
   render() {
     const features = this.props.features;
@@ -33,29 +59,7 @@ class FeaturesInfo extends React.Component {
         (feature) => feature.type === "HEATING_UNIT"
       );
 
-      const createDisplayElement = (feature) => (
-        <div key={getKey()}>
-          {feature.type !== null && <div className={styles.header}>{featureNames[feature.type]}</div>}
-          <div className={styles.container}>
-            <div className={styles.energy}>
-              <div className={styles.value}>{parseInt(feature.energy)} KwT</div>
-              <div className={styles.label}>Forbruk</div>
-            </div>
-            <div className={styles.pollution}>
-              <div className={styles.value}>{parseInt(feature.expense)} kr</div>
-              <div className={styles.label}>Utgifter</div>
-            </div>
-            <div className={styles.expenses}>
-              <div className={styles.value}>
-                {parseInt(feature.pollution)} CO<sub>2</sub>
-              </div>
-              <div className={styles.label}>Utslipp</div>
-            </div>
-          </div>
-        </div>
-      );
-
-      const rows = sorted.map(createDisplayElement);
+      const rows = sorted.map(it => <FeatureInfoRow key={"feature_row_" + it.type} feature={it} />);
 
       return (
         <div>
@@ -68,7 +72,7 @@ class FeaturesInfo extends React.Component {
           </Note>
           <div>{rows} </div>
           <h2 className="green">Oppvarming</h2>
-          <div>{heating.map(it => {it.type = null; return it;}).map(createDisplayElement)}</div>
+          <div>{heating.map(it => {it.type = null; return it;}).map(it => <FeatureInfoRow key={"feature_row_" + it.type} feature={it} />)}</div>
         </div>
       );
     } else {
