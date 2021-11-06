@@ -54,7 +54,7 @@ class FeaturesInfo extends React.Component {
         <div>
           <h2>Ditt forbruk</h2>
           <Note>
-            <h2>Dine top 3 kråker!</h2>
+            <h2>Dine topp 3 kråker!</h2>
             <p>Vår energikråke har sett på huset ditt og funnet topp tre plasser å stå.</p>
           </Note>
           {rows}
@@ -65,18 +65,5 @@ class FeaturesInfo extends React.Component {
     }
   }
 }
-/*
-
-          <Note>
-            <h1>Header</h1>
-          </Note>
-
-          <Note right='true' >
-            <h2>Header 2</h2>
-            <p>text <b>emph</b></p>
-          </Note>
-
-
-*/
 
 export default FeaturesInfo;

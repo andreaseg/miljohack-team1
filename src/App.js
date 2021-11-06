@@ -12,6 +12,7 @@ import SB1Button from "./components/SB1Button";
 import Checkbox from "./components/Checkbox";
 import YourFootprint from "./components/YourFootprint";
 import Note from "./components/Note";
+import HeatingInfo from "./components/HeatingInfo";
 
 
 function App() {
@@ -24,8 +25,9 @@ function App() {
     isApartment: false
   });
 
-  const [outputHouse, setOutputHouse] = useState(null)
-  const [features, setFeatures] = useState([])
+  const [outputHouse, setOutputHouse] = useState(null);
+  const [features, setFeatures] = useState([]);
+  const [heating, setHeating] = useState(null);
 
   async function postHousingData() {
     const id = await api.postHouse(inputHouse);
@@ -39,8 +41,12 @@ function App() {
   async function getEnergyProfile(house, houseId) {
     if (house && houseId) {
       const features = await api.getEnergyProfile(houseId)
-      setFeatures(features);
+      const featuresExceptHeating = features.filter(feature => feature.type !== "HEATING_UNIT")
 
+      setFeatures(featuresExceptHeating);
+
+      const heating = features.filter(feature => feature.type === "HEATING_UNIT")[0]
+      setHeating(heating);
     }
   }
 
@@ -86,6 +92,12 @@ function App() {
             onClick={postHousingData} />
 
           <FeaturesInfo features={features} />
+
+          <HeatingInfo heating={heating}>
+
+          </HeatingInfo>
+
+
 
 
       </div>
