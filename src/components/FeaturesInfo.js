@@ -26,11 +26,16 @@ class FeaturesInfo extends React.Component {
 
       const sorted = values
         .sort((a, b) => (a.pollution < b.pollution ? 1 : -1))
+        .filter((feature) => feature.type !== "HEATING_UNIT")
         .slice(0, 3);
 
-      const rows = sorted.map((feature) => (
+      const heating = values.filter(
+        (feature) => feature.type === "HEATING_UNIT"
+      );
+
+      const createDisplayElement = (feature) => (
         <div key={getKey()}>
-          <div className={styles.header}>{featureNames[feature.type]}</div>
+          {feature.type !== null && <div className={styles.header}>{featureNames[feature.type]}</div>}
           <div className={styles.container}>
             <div className={styles.energy}>
               <div className={styles.value}>{parseInt(feature.energy)} KwT</div>
@@ -48,16 +53,23 @@ class FeaturesInfo extends React.Component {
             </div>
           </div>
         </div>
-      ));
+      );
+
+      const rows = sorted.map(createDisplayElement);
 
       return (
         <div>
           <h2>Ditt forbruk</h2>
           <Note>
             <h2>Dine topp 3 kråker!</h2>
-            <p>Vår energikråke har sett på huset ditt og funnet topp tre plasser å stå.</p>
+            <p>
+              Vår energikråke har sett på huset ditt og funnet plasser
+              å stå.
+            </p>
           </Note>
-          {rows}
+          <div>{rows} </div>
+          <h2 className="green">Oppvarming</h2>
+          <div>{heating.map(it => {it.type = null; return it;}).map(createDisplayElement)}</div>
         </div>
       );
     } else {
