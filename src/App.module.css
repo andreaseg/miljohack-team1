@@ -61,3 +61,17 @@ h4 {
 .dark-green {
     color: #285949;
 }
+
+.submit {
+    background-color: #002776;
+    color: white;
+}
+
+.submit:hover {
+    background-color: #2a52a3;
+}
+
+.submit:active {
+    background-color: #5876b1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+}

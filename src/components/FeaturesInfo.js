@@ -59,11 +59,10 @@ class FeaturesInfo extends React.Component {
 
       return (
         <div>
-          <h2>Ditt forbruk</h2>
-          <Note>
-            <h2>Dine topp 3 kråker!</h2>
+          <Note right='true'>
+            <h2>Dine kråker!</h2>
             <p>
-              Vår energikråke har sett på huset ditt og funnet plasser
+              Vår miljøkråke har sett på huset ditt og funnet plasser
               å stå.
             </p>
           </Note>

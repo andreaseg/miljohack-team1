@@ -82,7 +82,6 @@ class ImprovementsInfo extends React.Component {
 
         return (
             <div>
-                <h3>Forbedringer</h3>
                 {rows}
             </div>
         )

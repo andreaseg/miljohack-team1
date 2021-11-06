@@ -68,9 +68,7 @@ function App() {
             energi
           </p>
         </Note>
-
         <HouseInputs inputHouse={inputHouse} setInputHouse={setInputHouse} />
-
         {!showImprovements && (
           <button onClick={() => setShowImprovements(true)}>
             <span>Registrer forbedringer</span>{" "}
@@ -94,13 +92,18 @@ function App() {
           />
         )}
 
-        <Note right="true">
-          <h1>Tekst her :)</h1>
-        </Note>
 
-        <SB1Button text="Se ditt forbruk" onClick={postHousingData} />
+        <button className={styles.submit} onClick={postHousingData} >Beregn Forbruk</button>
 
         <FeaturesInfo features={features} />
+
+        {features && features.length > 0 && (
+          <div>
+            <h2>Anbefalningen gjør at du sparer penger og miljøet</h2>
+            <p>Du vil straks bli kontaktet av Enova som gjør en befaring og lager et tilbud. Du kan få dekket kostnader til ubedringer med et grønt lån.</p>
+            <button>Bestill befaring nå</button>
+          </div>
+        )}
       </div>
       <footer className={styles.footer}>
         <img src={logo} alt="Miljøkråk1 Logo" />
