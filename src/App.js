@@ -22,17 +22,21 @@ function App() {
     constructionYear: 2001,
     municipalityNumber: 301,
     isApartment: false,
-    improvements: []
+    improvements: [],
   });
 
   const [outputHouse, setOutputHouse] = useState();
   const [features, setFeatures] = useState([]);
 
   async function postHousingData() {
-    const id = await api.postHouse(inputHouse);
+    const houseWithImprovements = { ...inputHouse };
+    houseWithImprovements.improvements = houseWithImprovements.improvements.map(
+      (improvement) => improvement.value
+    );
+
+    const id = await api.postHouse(houseWithImprovements);
 
     const house = await api.getHouse(id);
-    console.log("house");
     setOutputHouse(house);
 
     getEnergyProfile(house, id);
@@ -41,14 +45,11 @@ function App() {
   async function getEnergyProfile(house, houseId) {
     if (house && houseId) {
       const features = await api.getEnergyProfile(houseId);
-      console.log(features);
       setFeatures(features);
     }
   }
 
   function setImprovements(improvements) {
-    console.log("Setting state with improvements");
-    console.log(improvements);
     const updatedHouse = { ...inputHouse };
     updatedHouse.improvements = improvements;
     setInputHouse(updatedHouse);
@@ -58,25 +59,27 @@ function App() {
     <div className={styles.content}>
       <header className={styles.header}>Din bolig</header>
       <div className={styles.main}>
-
         <Note>
           <h2>Miljøkråken</h2>
           <p>
-            Fyll inn for din bolig, så finner miljøkråken hvor du lekker mest energi
+            Fyll inn for din bolig, så finner miljøkråken hvor du lekker mest
+            energi
           </p>
         </Note>
 
         <HouseInputs inputHouse={inputHouse} setInputHouse={setInputHouse} />
-        <ImprovementsInfo house={inputHouse} setImprovements={setImprovements} />
+        <ImprovementsInfo
+          house={inputHouse}
+          setImprovements={setImprovements}
+        />
 
-        <Note right='true'>
+        <Note right="true">
           <h1>Tekst her :)</h1>
         </Note>
 
         <SB1Button text="Se ditt forbruk" onClick={postHousingData} />
 
         <FeaturesInfo features={features} />
-
       </div>
       <footer className={styles.footer}>
         <img src={logo} alt="Miljøkråk1 Logo" />

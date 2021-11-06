@@ -51,15 +51,8 @@ class ImprovementsInfo extends React.Component {
         const improvements = this.props.house.improvements;
         const setImprovements = this.props.setImprovements;
 
-        console.log("render improvements");
-        console.log(improvements);
-
         function updateImprovements(isEnabled, improvement) {
             let updatedImprovements;
-            console.log("updateImprovements");
-            console.log(isEnabled);
-            console.log(improvement);
-            console.log("-----");
             if (isEnabled) {
                 updatedImprovements = [improvement, ...improvements];
             } else {
