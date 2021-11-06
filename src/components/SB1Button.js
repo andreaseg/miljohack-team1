@@ -5,9 +5,9 @@ class SB1Button extends React.Component {
 
     return (
         <>
-          <div className="sb1-button" onClick={this.props.onClick}>
+          <button onClick={this.props.onClick}>
               {this.props.text}
-            </div>
+            </button>
         </>
     )
   }

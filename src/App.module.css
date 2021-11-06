@@ -40,3 +40,19 @@ b {
     font-family: 'bold'; 
     color: #005AA4;
 }
+
+h2 {
+    font-family: 'bold'; 
+    color: #002776;
+}
+
+h3 {
+    font-family: header;
+    color: #002776;
+}
+
+h4 {
+    font-size: 19px;
+    font-family: content;
+    color: #002776;
+}
