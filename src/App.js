@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "./miljohack_logo_resized.png";
-import './Fonts.css';
-import styles from  "./App.module.css";
+import "./Fonts.css";
+import styles from "./App.module.css";
 import api from "./api/Api";
 
 // Components
@@ -12,8 +12,6 @@ import SB1Button from "./components/SB1Button";
 import Checkbox from "./components/Checkbox";
 import YourFootprint from "./components/YourFootprint";
 import Note from "./components/Note";
-import HeatingInfo from "./components/HeatingInfo";
-
 
 function App() {
   const [inputHouse, setInputHouse] = useState({
@@ -22,12 +20,11 @@ function App() {
     floors: 1,
     constructionYear: 2001,
     municipalityNumber: 301,
-    isApartment: false
+    isApartment: false,
   });
 
   const [outputHouse, setOutputHouse] = useState(null);
   const [features, setFeatures] = useState([]);
-  const [heating, setHeating] = useState(null);
 
   async function postHousingData() {
     const id = await api.postHouse(inputHouse);
@@ -40,66 +37,33 @@ function App() {
 
   async function getEnergyProfile(house, houseId) {
     if (house && houseId) {
-      const features = await api.getEnergyProfile(houseId)
-      const featuresExceptHeating = features.filter(feature => feature.type !== "HEATING_UNIT")
-
-      setFeatures(featuresExceptHeating);
-
-      const heating = features.filter(feature => feature.type === "HEATING_UNIT")[0]
-      setHeating(heating);
+      const features = await api.getEnergyProfile(houseId);
+      console.log(features);
+      setFeatures(features);
     }
   }
 
   return (
     <div className={styles.content}>
-      <header className={styles.header}>
-      Din bolig
-      </header>
+      <header className={styles.header}>Din bolig</header>
       <div className={styles.main}>
 
-          <Note>
-            <h1>Header</h1>
-          </Note>
+        <Note>
+          <h2>Miljøkråken</h2>
+          <p>
+            Fyll inn for din bolig, så finner miljøkråken hvor du lekker mest energi
+          </p>
+        </Note>
 
-          <Note right='true' >
-            <h2>Header 2</h2>
-            <p>text <b>emph</b></p>
-          </Note>
+        <HouseInputs inputHouse={inputHouse} setInputHouse={setInputHouse} />
 
-          <Checkbox onCheck={checked => console.log("Checked", checked)}i >Textbox text</Checkbox>
+        <Note right='true'>
+          <h1>Tekst her :)</h1>
+        </Note>
 
-          <div className="dittForbruk">
-            <h3>Ditt forbruk</h3>
-            Lønnskonto<br />
-            <b>20 945 kr</b><br />
-            Neste forfallsdato er 16. desember<br />
+        <SB1Button text="Se ditt forbruk" onClick={postHousingData} />
 
-            <h4>Ditt fotavtrykk</h4><br />
-
-            Du har litt å gå på<br />
-            <SB1Button text="Se detaljer" onClick={() => {}} />
-          </div>
-
-          <Checkbox onCheck={checked => console.log("Checked", checked)}i ></Checkbox>
-
-          <h2>Din bolig</h2>
-          <HouseInputs
-            inputHouse={inputHouse}
-            setInputHouse={setInputHouse} />
-
-          <SB1Button 
-            text="Se ditt forbruk"
-            onClick={postHousingData} />
-
-          <FeaturesInfo features={features} />
-
-          <HeatingInfo heating={heating}>
-
-          </HeatingInfo>
-
-
-
-
+        <FeaturesInfo features={features} />
       </div>
       <footer className={styles.footer}>
         <img src={logo} alt="Miljøkråk1 Logo" />
