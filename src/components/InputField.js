@@ -4,7 +4,7 @@ import styles from "./InputField.module.css";
 
 class InputField extends React.Component {
   render() {
-    const id = "id-" + Math.random.toString();
+    const id = "id-" + Math.random();
     const value = this.props.value;
     const setValue = this.props.setValue;
     const text = this.props.children

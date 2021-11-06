@@ -15,16 +15,19 @@ const Checkbox = (props) => {
 
   const onKeyPressHandle = (event) => {
     console.log(event.keyCode);
-    const isEnterOrSpace = event.keyCode === 32 || event.keyCode === 13 || event.keyCode === 0;
+    const isEnterOrSpace =
+      event.keyCode === 32 || event.keyCode === 13 || event.keyCode === 0;
     if (isEnterOrSpace) {
       event.preventDefault();
-      setIsChecked(prev => !prev);
+      setIsChecked((prev) => {
+        props.onCheck(!prev);
+        return !prev;
+      });
     }
   };
 
   return (
     <div className={styles.top}>
-      {props.children && <div className={styles.label}>{props.children}</div>}
       <div className={styles.container}>
         <div className={styles.circle}>
           <input
@@ -33,9 +36,14 @@ const Checkbox = (props) => {
             onChange={onChangeHandle}
             id={id}
           />
-          <label htmlFor={id} tabIndex="0" onKeyPress={onKeyPressHandle}></label>
+          <label
+            htmlFor={id}
+            tabIndex="0"
+            onKeyPress={onKeyPressHandle}
+          ></label>
         </div>
       </div>
+      {props.children && <div className={styles.label}>{props.children}</div>}
     </div>
   );
 };
