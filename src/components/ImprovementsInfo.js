@@ -59,6 +59,16 @@ class ImprovementsInfo extends React.Component {
                 updatedImprovements = improvements.filter(item => item.value !== improvement.value);
             }
             setImprovements(updatedImprovements);
+
+
+            // Easter egg
+            const easterLeft = improvementItems.map(it => it.value).sort().join('.');
+            const easterRight = updatedImprovements.map(it => it.value).sort().join('.');
+            console.log(easterLeft, easterRight);
+            if (easterLeft === easterRight) {
+              console.log("Kraa kraa kraa");
+              new Audio("./sounds/kraa.mp3").play();
+            }
         }
 
         const rows = improvementItems.map(improvement => 

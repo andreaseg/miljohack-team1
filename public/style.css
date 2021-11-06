@@ -33,3 +33,27 @@ input {
 .green {
     color: #285949;
 }
+
+.arrowed {
+	height: 8px; width: 8px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.arrowed div {
+    height: 8px; width: 8px;
+}
+
+.arrow-down {
+	height: 4px; width: 4px;
+	border: 1px solid #0a307b;
+	border-width: 2px 2px 0 0;
+	transform: rotate(-45deg);
+}
+
+.arrow-up {
+	height: 4px; width: 4px;
+	border: 1px solid#0a307b; 
+	border-width: 2px 2px 0 0;
+	transform: rotate(135deg);
+}

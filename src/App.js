@@ -25,6 +25,8 @@ function App() {
     improvements: [],
   });
 
+  const [showImprovements, setShowImprovements] = useState(false);
+
   const [outputHouse, setOutputHouse] = useState();
   const [features, setFeatures] = useState([]);
 
@@ -68,10 +70,29 @@ function App() {
         </Note>
 
         <HouseInputs inputHouse={inputHouse} setInputHouse={setInputHouse} />
-        <ImprovementsInfo
-          house={inputHouse}
-          setImprovements={setImprovements}
-        />
+
+        {!showImprovements && (
+          <button onClick={() => setShowImprovements(true)}>
+            <span>Registrer forbedringer</span>{" "}
+            <div className="arrowed">
+              <div className="arrow-down"></div>
+            </div>
+          </button>
+        )}
+        {showImprovements && (
+          <button onClick={() => setShowImprovements(false)}>
+            <span>Registrer forbedringer</span>{" "}
+            <div className="arrowed">
+              <div className="arrow-up"></div>
+            </div>
+          </button>
+        )}
+        {showImprovements && (
+          <ImprovementsInfo
+            house={inputHouse}
+            setImprovements={setImprovements}
+          />
+        )}
 
         <Note right="true">
           <h1>Tekst her :)</h1>
