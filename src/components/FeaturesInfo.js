@@ -54,7 +54,7 @@ class FeaturesInfo extends React.Component {
         <div>
           <h2>Ditt forbruk</h2>
           <Note>
-            <h2>Dine top 3 kråker!</h2>
+            <h2>Dine topp 3 kråker!</h2>
             <p>Vår energikråke har sett på huset ditt og funnet topp tre plasser å stå.</p>
           </Note>
           {rows}
