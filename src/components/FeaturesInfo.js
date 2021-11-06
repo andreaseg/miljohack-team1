@@ -23,10 +23,10 @@ class FeaturesInfo extends React.Component {
       const rows = values.map(feature => 
         (
           <div key={getKey()}>
-            <Row text="Type:" value={featureNames[feature.type]}/>
-            <Row text="Forbruk:" value={parseInt(feature.energy)+" kWh"} />
-            <Row text="Utslipp:" value={parseInt(feature.pollution)+" CO2-ekvivalenter"} />
-            <Row text="Utgifter:" value={parseInt(feature.expense)+"kr"}/>
+            <b>{featureNames[feature.type]}</b>
+            Forbruk: {parseInt(feature.energy)+" kWh"}<br />
+            Utslipp: {parseInt(feature.pollution)+" CO2-ekvivalenter"}<br />
+            Utgifter: {parseInt(feature.expense)+"kr"}<br />
           </div>)
       )
 
