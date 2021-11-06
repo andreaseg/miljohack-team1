@@ -24,6 +24,7 @@
     margin: auto;
     padding-top: 60px;
     padding-bottom: 20px;
+    pointer-events: none;
 }
 
 .main {
