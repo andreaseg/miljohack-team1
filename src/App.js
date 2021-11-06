@@ -22,8 +22,10 @@ function App() {
     constructionYear: 2001,
     municipalityNumber: 301,
     isApartment: false,
-    improvements: []
+    improvements: [],
   });
+
+  const [showImprovements, setShowImrpovements] = useState(false);
 
   const [outputHouse, setOutputHouse] = useState();
   const [features, setFeatures] = useState([]);
@@ -58,25 +60,46 @@ function App() {
     <div className={styles.content}>
       <header className={styles.header}>Din bolig</header>
       <div className={styles.main}>
-
         <Note>
           <h2>Miljøkråken</h2>
           <p>
-            Fyll inn for din bolig, så finner miljøkråken hvor du lekker mest energi
+            Fyll inn for din bolig, så finner miljøkråken hvor du lekker mest
+            energi
           </p>
         </Note>
 
         <HouseInputs inputHouse={inputHouse} setInputHouse={setInputHouse} />
-        <ImprovementsInfo house={inputHouse} setImprovements={setImprovements} />
 
-        <Note right='true'>
+        {!showImprovements && (
+          <button onClick={() => setShowImrpovements(true)}>
+            <span>Registrer forbedringer</span>{" "}
+            <div class="arrowed">
+              <div class="arrow-down"></div>
+            </div>
+          </button>
+        )}
+        {showImprovements && (
+          <button onClick={() => setShowImrpovements(false)}>
+            <span>Registrer forbedringer</span>{" "}
+            <div class="arrowed">
+              <div class="arrow-up"></div>
+            </div>
+          </button>
+        )}
+        {showImprovements && (
+          <ImprovementsInfo
+            house={inputHouse}
+            setImprovements={setImprovements}
+          />
+        )}
+
+        <Note right="true">
           <h1>Tekst her :)</h1>
         </Note>
 
         <SB1Button text="Se ditt forbruk" onClick={postHousingData} />
 
         <FeaturesInfo features={features} />
-
       </div>
       <footer className={styles.footer}>
         <img src={logo} alt="Miljøkråk1 Logo" />
