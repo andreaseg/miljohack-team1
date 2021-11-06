@@ -7,7 +7,7 @@ class InputField extends React.Component {
     const id = "id-" + Math.random.toString();
     const value = this.props.value;
     const setValue = this.props.setValue;
-    const text = this.props.text;
+    const text = this.props.children
 
     return (
       <div className={styles.container}>

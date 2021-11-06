@@ -4,7 +4,7 @@ import getKey from "../utils/GetKey";
 import styles from "./Checkbox.module.css";
 
 const Checkbox = (props) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(props.checked || false);
   const [id, setId] = useState("checkbox_" + getKey());
 
   const onChangeHandle = (event) => {
