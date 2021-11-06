@@ -1,8 +1,4 @@
 import React from 'react';
-import Row from './Row';
-import getKey from '../utils/GetKey';
-import Note from './Note';
-
 
 class HeatingInfo extends React.Component {
 
