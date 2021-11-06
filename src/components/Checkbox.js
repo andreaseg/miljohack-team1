@@ -24,7 +24,6 @@ const Checkbox = (props) => {
 
   return (
     <div className={styles.top}>
-      {props.children && <div className={styles.label}>{props.children}</div>}
       <div className={styles.container}>
         <div className={styles.circle}>
           <input
@@ -36,6 +35,7 @@ const Checkbox = (props) => {
           <label htmlFor={id} tabIndex="0" onKeyPress={onKeyPressHandle}></label>
         </div>
       </div>
+      {props.children && <div className={styles.label}>{props.children}</div>}
     </div>
   );
 };
