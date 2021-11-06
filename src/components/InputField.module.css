@@ -1,0 +1,9 @@
+.container {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.container input {
+    display: block;
+    margin-left: 0px;
+}

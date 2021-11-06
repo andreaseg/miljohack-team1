@@ -10,6 +10,7 @@ import FeaturesInfo from "./components/FeaturesInfo";
 import HouseInputs from "./components/HouseInputs";
 import SB1Button from "./components/SB1Button";
 import Checkbox from "./components/Checkbox";
+import Note from "./components/Note";
 
 
 function App() {
@@ -48,6 +49,15 @@ function App() {
       Din bolig
       </header>
       <div className={styles.main}>
+
+          <Note>
+            <h1>Header</h1>
+          </Note>
+
+          <Note right='true' >
+            <h2>Header 2</h2>
+            <p>text <b>emph</b></p>
+          </Note>
 
           <Checkbox onCheck={checked => console.log("Checked", checked)}i >Textbox text</Checkbox>
 
