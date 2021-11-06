@@ -1,0 +1,41 @@
+.note {
+    font-family: 'content';
+    padding: 16px;
+    background-color: #C9E6DB;
+    font-size: 22px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.noteLeft {
+    border-top-left-radius:45px;
+}
+
+.noteRight {
+    border-top-right-radius:45px;
+}
+
+.note p {
+    margin-top: 16px;
+    margin-bottom: 0px;
+}
+
+.note b {
+    color: black;
+    font-family: 'content';
+    font-size: 22px;
+}
+
+.note h1 {
+    margin: 0px;
+    color: #285949;
+    font-family: 'header';
+    font-size: 48px;
+}
+
+.note h2 {
+    margin: 0px;
+    color: #285949;
+    font-family: 'header';
+    font-size: 24px;
+}

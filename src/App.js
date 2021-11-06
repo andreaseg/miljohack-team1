@@ -11,6 +11,7 @@ import HouseInputs from "./components/HouseInputs";
 import SB1Button from "./components/SB1Button";
 import Checkbox from "./components/Checkbox";
 import YourFootprint from "./components/YourFootprint";
+import Note from "./components/Note";
 
 
 function App() {
@@ -50,6 +51,16 @@ function App() {
       </header>
       <div className={styles.main}>
 
+          <Note>
+            <h1>Header</h1>
+          </Note>
+
+          <Note right='true' >
+            <h2>Header 2</h2>
+            <p>text <b>emph</b></p>
+          </Note>
+
+          <Checkbox onCheck={checked => console.log("Checked", checked)}i >Textbox text</Checkbox>
 
           <div className="dittForbruk">
             <h3>Ditt forbruk</h3>
@@ -88,9 +99,5 @@ function App() {
     </div>
   );
 }
-/*
-
-<Checkbox onCheck={checked => console.log("Checked", checked)}i >Textbox text</Checkbox>
-          */
 
 export default App;
